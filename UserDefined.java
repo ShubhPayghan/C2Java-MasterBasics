@@ -1,0 +1,38 @@
+import java.util.*;
+
+class UserDefined
+{
+    public static void main(String Args[])
+    {
+        Scanner sobj = new Scanner(System.in);
+
+        System.out.println("Enter your age:");
+        int iAge =  sobj.nextInt();
+        sobj.close();
+        try
+        {
+            if(iAge<18)
+            {
+                AgeInvalid aobj = new AgeInvalid("Your age is below 18");
+                throw aobj;
+            }
+            else
+            {
+                System.out.println("Login successful...");
+            }
+        }
+        catch(AgeInvalid obj)
+        {
+            System.out.println("Inside catch block");
+            System.out.println(obj);
+        }
+    }
+}
+
+class AgeInvalid extends Exception
+{
+    public AgeInvalid(String str)
+    {
+        super(str);
+    }
+}
